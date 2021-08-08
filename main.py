@@ -12,14 +12,12 @@ import sys
 
 def dayOfProgrammer(year):
     # Write your code here
-    if year < 1918:                                                    # checking the year greater the 1918
-        d = 256-244
-        return f"{d}.09.{year}"
-    elif (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0):      #Checking the Leap year
-        d = 256-244
-        return f"{d}.09.{year}"
-    d1 = 256-243
-    return f"{d1}.09.{year}"
+    if (year == 1918):
+        return '26.09.1918'
+    elif ((year <= 1917) & (year%4 == 0)) or ((year > 1918) & (year%400 == 0 or ((year%4 == 0) & (year%100 != 0)))):  # Checking leap year
+        return '12.09.%s' %year
+    else:
+        return '13.09.%s' %year
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
